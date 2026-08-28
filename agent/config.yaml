@@ -1,0 +1,43 @@
+# Agentic System Under Test Configuration
+
+llm:
+  # Placeholder for remote Ollama server
+  base_url: "http://192.168.1.10:11434/api/generate"
+  model: "llama3.2:latest"
+  temperature: 0.1
+  timeout: 2000
+
+orchestrator:
+  # Planner options: "rule_based" or "llm_based"
+  planner_type: "llm_based"
+  max_steps: 5
+  memory_path: "memory.json"
+
+guardrails:
+  input:
+    enabled: true
+    blocked_keywords:
+      - "ignore previous instructions"
+      - "system prompt"
+      - "hack"
+  output:
+    enabled: true
+    blocked_keywords:
+      - "i don't know"
+      - "as an ai"
+
+rag:
+  # RAG configuration for testing
+  top_k: 3
+  similarity_threshold: 0.5
+  embedding_model: "all-MiniLM-L6-v2"
+  index_path: "data/faiss_index.bin"
+  docs_dir: "data"
+  chunks_path: "data/chunks.pkl"
+  chunk_size: 500
+  chunk_overlap: 50
+
+logging:
+  log_level: "DEBUG"
+  log_dir: "logs"
+  log_file: "trace.log"
