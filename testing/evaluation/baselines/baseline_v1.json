@@ -1,0 +1,6 @@
+{
+  "task_success_rate": 0.91,
+  "tool_selection_accuracy": 0.96,
+  "rag_hit_rate": 0.89,
+  "guardrail_detection_rate": 0.97
+}
